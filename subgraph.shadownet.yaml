@@ -1,0 +1,154 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - name: xU3O8
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0x7C013E2A659354872469C3F0bA402393e01bddc6'
+      abi: ERC20
+      startBlock: 2212497
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - name: VNXAU
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0xA69Ae2C69A66a75c4D4B50bc97b533bD5f4eeb97'
+      abi: ERC20
+      startBlock: 3204103
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - name: RARE
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0xC0A45ce621bD781fE51777D59Cd0Fe98B6d3de16'
+      abi: ERC20
+      startBlock: 3405075
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - name: USDC
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0x064455f03b93bc1cDb8197F718aa055AE3115400'
+      abi: ERC20
+      startBlock: 1953101
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - name: xCo
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0x3A29153CED75A3a550cF3Ed2fd0eC630F4822bE4'
+      abi: ERC20
+      startBlock: 2212467
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - name: xLi
+    kind: ethereum/contract
+    network: etherlink-shadownet
+    source:
+      address: '0x12df4F85f7C1AbCa9710b2D2b3B6c24389FEBC91'
+      abi: ERC20
+      startBlock: 2212429
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mappings/token.ts
+      entities:
+        - Token
+        - Account
+        - AccountBalance
+        - AccountBalanceSnapshot
+        - TransferEvent
+        - UserTransfer
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
