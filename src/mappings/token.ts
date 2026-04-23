@@ -95,6 +95,10 @@ export function handleTransfer(event: Transfer): void {
 
   if (isBurn || isTransfer) {
     let account = getOrCreateAccount(event.params.from)
+    if (token.symbol != 'USDC') {
+      if (account.firstTradeAt === null) account.firstTradeAt = event.block.timestamp
+      account.lastTradeAt = event.block.timestamp
+    }
     let balance = decreaseAccountBalance(account, token, amount)
     balance.block = event.block.number
     balance.modified = event.block.timestamp
@@ -107,6 +111,10 @@ export function handleTransfer(event: Transfer): void {
 
   if (isMint || isTransfer) {
     let account = getOrCreateAccount(event.params.to)
+    if (token.symbol != 'USDC') {
+      if (account.firstTradeAt === null) account.firstTradeAt = event.block.timestamp
+      account.lastTradeAt = event.block.timestamp
+    }
     let balance = increaseAccountBalance(account, token, amount)
     balance.block = event.block.number
     balance.modified = event.block.timestamp

@@ -13,6 +13,12 @@ type Account @entity {
 
   " All transfer activity (sent and received) for this account "
   transfers: [UserTransfer!]! @derivedFrom(field: "user")
+
+  " Timestamp of the account's first ever metals token trade (excludes USDC) "
+  firstTradeAt: BigInt
+
+  " Timestamp of the account's most recent metals token trade (excludes USDC) "
+  lastTradeAt: BigInt
 }
 
 #
