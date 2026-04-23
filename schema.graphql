@@ -10,6 +10,9 @@ type Account @entity {
 
   " Token balances that this account holds "
   balances: [AccountBalance!]! @derivedFrom(field: "account")
+
+  " All transfer activity (sent and received) for this account "
+  transfers: [UserTransfer!]! @derivedFrom(field: "user")
 }
 
 #
@@ -243,6 +246,40 @@ type PauseEvent implements TokenEvent @entity {
   block: BigInt!
 
   " Event timestamp "
+  timestamp: BigInt!
+
+  " Transaction hash "
+  transaction: Bytes!
+}
+
+#
+# Per-user view of all balance-changing activity. Two records are created per Transfer:
+# one for the sender (direction = "sent") and one for the receiver (direction = "received").
+# Burns produce a single "sent" record; mints produce a single "received" record.
+#
+type UserTransfer @entity {
+  " Equals to: <txHash>-<logIndex>-<direction>-<userAddress>"
+  id: ID!
+
+  " The account whose balance changed "
+  user: Account!
+
+  " Token transferred "
+  token: Token!
+
+  " sent or received "
+  direction: String!
+
+  " The other party (0x0 for burns/mints) "
+  counterparty: Bytes!
+
+  " Amount transferred "
+  amount: BigDecimal!
+
+  " Block number "
+  block: BigInt!
+
+  " Timestamp in seconds "
   timestamp: BigInt!
 
   " Transaction hash "
